@@ -1,9 +1,11 @@
 package kodlamaio.hrms.entities.concretes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -15,15 +17,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "job_seekers")
 @Data
-@PrimaryKeyJoinColumn(name = "user_id")
+@PrimaryKeyJoinColumn(name = "user_id",referencedColumnName = "id")
 @AllArgsConstructor
 @NoArgsConstructor
 public class JobSeeker extends User{
 
-//	@Id
-//	@GeneratedValue
-//	@Column(name= "user_id")
-//	private int userId;
 	
 	@Column(name= "first_name")
 	private String firstName;
@@ -39,5 +37,24 @@ public class JobSeeker extends User{
 	
 	@Column(name = "is_verified", columnDefinition = "boolean default false")
 	private boolean isVerified = false;
+	
+	@OneToMany(mappedBy="jobSeeker")
+	private List<Skill> skills;
+	
+	@OneToMany(mappedBy="jobSeeker")
+	private List<School> school;
+	
+	@OneToMany(mappedBy="jobSeeker")
+	private List<Link> link;
+	
+	@OneToMany(mappedBy="jobSeeker")
+	private List<Language> language;
+	
+	@OneToMany(mappedBy="jobSeeker")
+	private List<JobExperience> jobExperience;
+	
+	@OneToMany(mappedBy="jobSeeker")
+	private List<CoverLetter> coverLetter;
+	
 
 }

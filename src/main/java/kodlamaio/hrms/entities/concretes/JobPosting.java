@@ -26,14 +26,6 @@ public class JobPosting {
 	@Column(name="id")
 	private int id;
 	
-//	@Column(name="employer_id")
-//	private int employerId;
-//	
-//	@Column(name="city_id")
-//	private int cityId;
-//	
-//	@Column(name="job_position_id")
-//	private int jobPositionId;
 	
 	@Column(name="description")
 	private String description;
